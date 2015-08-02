@@ -34,6 +34,7 @@ defmodule Ws2048.Mixfile do
      {:mariaex, ">= 0.0.0"},
      {:phoenix_html, "~> 1.4"},
      {:phoenix_live_reload, "~> 0.5", only: :dev},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:tty2048, github: "lexmag/tty2048"}]
   end
 end

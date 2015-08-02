@@ -2,7 +2,7 @@ defmodule Ws2048.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", Ws2048.RoomChannel
+  channel "games:*", Ws2048.GameChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

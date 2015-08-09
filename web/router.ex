@@ -13,13 +13,8 @@ defmodule Ws2048.Router do
   end
 
   scope "/", Ws2048 do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Ws2048 do
-  #   pipe_through :api
-  # end
 end

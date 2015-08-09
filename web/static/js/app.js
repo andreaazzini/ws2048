@@ -1,12 +1,5 @@
 import {Socket} from "phoenix"
 
-// let socket = new Socket("/ws")
-// socket.connect()
-// let chan = socket.chan("topic:subtopic", {})
-// chan.join().receive("ok", resp => {
-//   console.log("Joined succesffuly!", resp)
-// })
-
 class App {
   static init() {
     var socket = new Socket("/socket")
@@ -24,6 +17,7 @@ class App {
     chan.on("move:down", state => console.log(state.down))
     chan.on("move:left", state => console.log(state.left))
     chan.on("move:right", state => console.log(state.right))
+    chan.on("grid", game => write_grid(game.grid))
     chan.on("move", game => write_grid(game.grid))
 
     function checkKey(e) {

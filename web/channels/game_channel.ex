@@ -5,6 +5,7 @@ defmodule Ws2048.GameChannel do
 
   def join("games:live", message, socket) do
     Process.flag(:trap_exit, true)
+    send(self, :peek_grid)
     {:ok, socket}
   end
 
@@ -14,6 +15,12 @@ defmodule Ws2048.GameChannel do
 
   def terminate(reason, socket) do
     :ok
+  end
+
+  def handle_info(:peek_grid, socket) do
+    {_, game} = Tty2048.Game.peek()
+    push socket, "grid", game
+    {:noreply, socket}
   end
 
   def handle_in("move:up", _msg, socket) do

@@ -307,3 +307,18 @@ body {
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards; }
+
+.move-container {
+  position: absolute;
+  margin-top: 600px;
+}
+
+.move-table {
+  width: 100%;
+  padding: 100px;
+}
+
+.move-table .counter {
+  width: 100%;
+  text-align: right;
+}

@@ -42,6 +42,27 @@
         </div>
 
         <div id="tile-container" class="tile-container"></div>
+
+	<div id="move-container" class="move-container">
+	  <table class="move-table">
+	    <tr>
+	      <td>Up</td>
+	      <td id="up-counter" class="counter"></td>
+	    </tr>
+	    <tr>
+	      <td>Down</td>
+	      <td id="down-counter" class="counter"></td>
+	    </tr>
+	    <tr>
+	      <td>Left</td>
+	      <td id="left-counter" class="counter"></td>
+	    </tr>
+	    <tr>
+	      <td>Right</td>
+	      <td id="right-counter" class="counter"></td>
+	    </tr>
+	  </table>
+	</div>
     </div>
 
     </div> <!-- /container -->

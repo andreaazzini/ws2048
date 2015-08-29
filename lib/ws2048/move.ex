@@ -31,8 +31,12 @@ defmodule Ws2048.Move do
   def handle_info(:decided, %__MODULE__{} = state) do
     values = Map.from_struct(state) |> Map.values()
     direction = Enum.max(values)
-    if Enum.count(values, &(&1 == direction)) == 1,
-      do: decide_direction(state) |> Tty2048.Game.move()
+    if unique_move?(values, direction) do
+      decide_direction(state) |> Tty2048.Game.move()
+      Ws2048.Endpoint.broadcast!("games:live", "timeout", %{decided: true})
+    else
+      Ws2048.Endpoint.broadcast!("games:live", "timeout", %{decided: false})
+    end
     restart()
   end
 
@@ -68,4 +72,7 @@ defmodule Ws2048.Move do
     Enum.max_by(Map.from_struct(state), fn {_direction, n} -> n end)
     |> elem(0)
   end
+
+  defp unique_move?(values, direction),
+    do: Enum.count(values, &(&1 == direction)) == 1
 end

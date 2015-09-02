@@ -37,19 +37,23 @@ defmodule Ws2048.Move do
   end
 
   def handle_call(:up, _, %__MODULE__{up: up} = state) do
-    {:reply, state, %{state | up: up + 1}}
+    new_state = %{state | up: up + 1}
+    {:reply, new_state, new_state}
   end
 
   def handle_call(:down, _, %__MODULE__{down: down} = state) do
-    {:reply, state, %{state | down: down + 1}}
+    new_state = %{state | down: down + 1}
+    {:reply, new_state, new_state}
   end
 
   def handle_call(:left, _, %__MODULE__{left: left} = state) do
-    {:reply, state, %{state | left: left + 1}}
+    new_state = %{state | left: left + 1}
+    {:reply, new_state, new_state}
   end
 
   def handle_call(:right, _, %__MODULE__{right: right} = state) do
-    {:reply, state, %{state | right: right + 1}}
+    new_state = %{state | right: right + 1}
+    {:reply, new_state, new_state}
   end
 
   defp reset(),

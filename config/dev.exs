@@ -32,4 +32,4 @@ config :ws2048, Ws2048.Repo,
   username: "root",
   password: "",
   database: "ws2048_dev",
-  size: 10 # The amount of database connections in the pool
+  pool_size: 10 # The amount of database connections in the pool

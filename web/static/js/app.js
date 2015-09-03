@@ -7,7 +7,7 @@ class App {
         socket.connect()
         socket.onClose(e => console.log("CLOSE", e))
 
-        var chan = socket.chan("games:live", {})
+        var chan = socket.chan("games:live")
         chan.join().receive("ignore", () => console.log("auth error"))
             .receive("ok", () => console.log("join ok"))
         chan.onError(e => console.log("something went wrong", e))

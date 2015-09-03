@@ -22,11 +22,11 @@ defmodule Ws2048.Mixfile do
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   defp deps do
-    [{:phoenix, "~> 0.15"},
-     {:phoenix_ecto, "~> 0.8"},
+    [{:phoenix, "~> 1.0"},
+     {:phoenix_ecto, "~> 0.9"},
      {:mariaex, ">= 0.0.0"},
-     {:phoenix_html, "~> 1.4"},
-     {:phoenix_live_reload, "~> 0.5", only: :dev},
+     {:phoenix_html, "~> 2.0"},
+     {:phoenix_live_reload, "~> 1.0"},
      {:cowboy, "~> 1.0"},
      {:tty2048, github: "lexmag/tty2048"}]
   end

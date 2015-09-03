@@ -3,7 +3,7 @@ defmodule Ws2048.Mixfile do
 
   def project do
     [app: :ws2048,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,

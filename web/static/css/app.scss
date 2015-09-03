@@ -310,15 +310,26 @@ body {
 
 .move-container {
   position: absolute;
-  margin-top: 600px;
 }
 
-.move-table {
-  width: 100%;
-  padding: 100px;
+.timeout-container {
+  margin-top: 120%;
+  display: block;
 }
 
-.move-table .counter {
-  width: 100%;
-  text-align: right;
+.move {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #cca92c;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.timer {
+  float: right;
+  font-size: 20px;
 }

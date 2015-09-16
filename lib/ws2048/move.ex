@@ -26,6 +26,10 @@ defmodule Ws2048.Move do
     end
   end
 
+  def game_over() do
+    GenServer.cast(__MODULE__, :game_over)
+  end
+
   def handle_info(:decided, %__MODULE__{} = state) do
     values =
       Map.from_struct(state)
@@ -36,6 +40,12 @@ defmodule Ws2048.Move do
       |> Tty2048.Game.move
     end
     restart(decided)
+  end
+
+  def handle_cast(:game_over, _) do
+    Supervisor.terminate_child(Ws2048.Supervisor, Ws2048.Game)
+    Supervisor.restart_child(Ws2048.Supervisor, Ws2048.Game)
+    restart(false)
   end
 
   defp decide_direction(%__MODULE__{} = state) do

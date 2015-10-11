@@ -3,13 +3,20 @@ defmodule Ws2048.Watcher do
 
   alias Tty2048.Game
 
+  import Ws2048.Endpoint, only: [broadcast!: 3]
+
   def init({%Game{} = game, _args}) do
-    Ws2048.Endpoint.broadcast!("games:live", "move", game)
+    broadcast! "games:live", "move", game
     {:ok, nil}
   end
 
-  def handle_event(%Game{} = game, state) do
-    Ws2048.Endpoint.broadcast!("games:live", "move", game)
+  def handle_event({:moved, %Game{} = game}, state) do
+    broadcast! "games:live", "move", game
+    {:ok, state}
+  end
+
+  def handle_event({:game_over, _game}, state) do
+    Ws2048.Move.game_over
     {:ok, state}
   end
 end

@@ -4,20 +4,26 @@ defmodule Ws2048 do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    children = [
-      supervisor(Ws2048.Endpoint, []),
-      worker(Ws2048.Repo, []),
-      worker(Ws2048.Move, []),
+    game_sup_children = [
       worker(Tty2048.Game, [4]),
-      worker(Tty2048.Game.Watcher, [Ws2048.Watcher])
+      worker(Tty2048.Game.Watcher, [__MODULE__.Watcher])
     ]
 
-    opts = [strategy: :one_for_one, name: Ws2048.Supervisor]
+    game_sup_opts = [strategy: :one_for_all, name: __MODULE__.GameSupervisor]
+
+    children = [
+      supervisor(__MODULE__.Endpoint, []),
+      worker(__MODULE__.Repo, []),
+      worker(__MODULE__.Move, []),
+      supervisor(Supervisor, [game_sup_children, game_sup_opts], id: __MODULE__.Game)
+    ]
+
+    opts = [strategy: :one_for_one, name: __MODULE__.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   def config_change(changed, _new, removed) do
-    Ws2048.Endpoint.config_change(changed, removed)
+    __MODULE__.Endpoint.config_change(changed, removed)
     :ok
   end
 end

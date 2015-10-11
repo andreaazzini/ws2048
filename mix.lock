@@ -12,4 +12,4 @@
   "poison": {:hex, :poison, "1.5.0"},
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "ranch": {:hex, :ranch, "1.1.0"},
-  "tty2048": {:git, "git://github.com/lexmag/tty2048.git", "dfb54415fb00062e5884ab1d6a6f154a5227003e", []}}
+  "tty2048": {:git, "git://github.com/lexmag/tty2048.git", "769356706a21ba264e0d34936628cdb1baf531ad", []}}
